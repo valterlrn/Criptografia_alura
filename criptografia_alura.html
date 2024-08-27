@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="criptografia_style.css">
+  <title>Criptografia</title>
+</head>
+<body>
+  <div class="texto">
+    <div class="caixa">
+      <textarea id="input" class="input-caixa" placeholder="Texto a ser criptografado"></textarea>
+      <button class="button" onclick="criptografar_texto()">Criptografar</button>
+    </div>
+    <div class="caixa">
+      <textarea id="output" class="output-caixa" placeholder="Texto criptografado"></textarea>
+      <button class="button" onclick="descriptografar_texto()">Descriptografar</button>
+    </div>
+  </div>
+  <div class="imagemcripto">
+    <h1><img src="imagem_cripto.png" alt="Imagem de criptografia"></h1>
+  </div>
+
+  <script>
+    function criptografar_texto() {
+      var inputText = document.getElementById("input").value;
+      var outputText = "";
+
+      for (var i = 0; i < inputText.length; i++) {
+        var charCode = inputText.charCodeAt(i);
+        var encryptedCharCode = charCode + 3;
+        outputText += String.fromCharCode(encryptedCharCode);
+      }
+
+      document.getElementById("output").value = outputText;
+    }
+
+    function descriptografar_texto() {
+      var inputText = document.getElementById("output").value;
+      var outputText = "";
+
+      for (var i = 0; i < inputText.length; i++) {
+        var charCode = inputText.charCodeAt(i);
+        var decryptedCharCode = charCode - 3;
+        outputText += String.fromCharCode(decryptedCharCode);
+      }
+
+      document.getElementById("input").value = outputText;
+    }
+  </script>
+</body>
+</html>
